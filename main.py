@@ -23,7 +23,11 @@ def print_report(filepath, num_words, char_table):
 
 
 def main():
-    filepath = "books/frankenstein.txt"
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
+    filepath = sys.argv[1]
     text = get_book_text(filepath)
     num_words = get_num_words(text)
     freqs = get_char_freq(text)
@@ -31,6 +35,7 @@ def main():
 
     print(f"{num_words} words found in the document")
     print_report(filepath, num_words, char_table)
+    sys.exit(0)
 
 
 main()
